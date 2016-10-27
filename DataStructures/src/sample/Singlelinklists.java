@@ -1,4 +1,4 @@
-package linkedlists;
+package sample;
 
 class Link
 {
@@ -10,7 +10,7 @@ Link(double data)
 	this.next = null;
 }
 }
-public class Singlelinklists {
+public class SLinkLists {
 Link first , last;
 public void insertFirst(double data)
 {
@@ -39,6 +39,19 @@ public void push(double new_data)
     /* 4. Move the head to point to new Node */
     first = new_node;
 }
+
+public void insert(double value , double new_data)
+{   Link prev_node;
+	Link new_node = new Link(new_data);
+    prev_node = first;
+    while(prev_node.data!=value)
+    {
+    	prev_node =prev_node.next;
+    }
+	
+	new_node.next=prev_node.next;
+    prev_node.next = new_node;
+}
 public void printlist()
 {
 Link current = first ;
@@ -50,12 +63,13 @@ while(current!=null)
 }
 public static void main(String[] args)
 {
-	Singlelinklists sl =new Singlelinklists();
+	SLinkLists sl =new SLinkLists();
 	sl.push(2.01);
 	
 	sl.printlist();
 	sl.insertFirst(2.00);
 	sl.insertFirst(2.02);
+	sl.insert(2.00, 3);
 	sl.printlist();
 }
 }
